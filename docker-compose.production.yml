@@ -1,0 +1,16 @@
+services:
+  graphql-backend:
+    env_file:
+      - .production.env
+    build:
+      target: production
+    ports:
+      - "3001:3001"
+
+  postgres:
+    env_file:
+      - .production.env
+
+  postgres-admin:
+    env_file:
+      - .production.env

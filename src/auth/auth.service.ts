@@ -6,8 +6,8 @@ import { JwtService } from '@nestjs/jwt';
 import { SignUpInput } from 'src/auth/dto/sign-up.input';
 import * as bcrypt from 'bcrypt';
 import { ConfigService } from '@nestjs/config';
-import { EnvironmentVariables } from 'src/types';
 import { JwtPayloadType } from 'src/auth/strategies/jwt-payload.decorator';
+import { EnvironmentVariables } from 'src/environment.schema';
 
 @Injectable()
 export class AuthService {
@@ -21,6 +21,7 @@ export class AuthService {
     const accessExpiresIn = this.configService.get<string>(
       'ACCESS_TOKEN_EXPIRATION',
     );
+
     const accessSecret = this.configService.get<string>('ACCESS_TOKEN_SECRET');
 
     const refreshExpiresIn = this.configService.get<string>(

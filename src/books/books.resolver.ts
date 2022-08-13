@@ -7,6 +7,6 @@ export class BooksResolver {
   @Query(() => String, { name: 'books' })
   @UseGuards(JwtAccessGuard)
   findAll() {
-    return 'hello';
+    return 'hello!';
   }
 }

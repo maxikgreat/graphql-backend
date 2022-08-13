@@ -2,8 +2,8 @@ import { PassportStrategy } from '@nestjs/passport';
 import { ExtractJwt, Strategy } from 'passport-jwt';
 import { Injectable } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
-import { EnvironmentVariables } from 'src/types';
 import { JwtPayloadType } from 'src/auth/strategies/jwt-payload.decorator';
+import { EnvironmentVariables } from 'src/environment.schema';
 
 export const name = 'jwt-access';
 
