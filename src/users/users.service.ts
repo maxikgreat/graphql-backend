@@ -1,6 +1,7 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { CreateUserInput } from './dto/create-user.input';
 import { User } from 'src/users/entities/user.entity';
+import { PrismaService } from 'src/prisma/prisma.service';
 
 @Injectable()
 export class UsersService {
@@ -17,6 +18,8 @@ export class UsersService {
     },
   ];
 
+  constructor(private readonly prisma: PrismaService) {}
+
   create(createUserInput: CreateUserInput): User {
     const user: User = {
       ...createUserInput,
@@ -28,8 +31,8 @@ export class UsersService {
     return user;
   }
 
-  findAll(): User[] {
-    return this.users;
+  findAll(): Promise<User[]> {
+    return this.prisma.user.findMany({});
   }
 
   findOne(name: string): User | undefined {

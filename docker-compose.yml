@@ -1,20 +1,20 @@
 version: "3.9"
 services:
-  graphql-backend:
-    env_file:
-      - .development.env
-    build:
-      context: .
-      dockerfile: Dockerfile
-      target: development
-    ports:
-      - "3000:3000"
-    volumes:
-      - .:/graphql-backend
-      - /graphql-backend/node_modules
-    depends_on:
-      - postgres
-
+#  graphql-backend:
+#    env_file:
+#      - .development.env
+#    build:
+#      context: .
+#      dockerfile: Dockerfile
+#      target: development
+#    ports:
+#      - "3000:3000"
+#    volumes:
+#      - .:/graphql-backend
+#      - /graphql-backend/node_modules
+#    depends_on:
+#      - postgres
+#
   postgres:
     env_file:
       - .development.env

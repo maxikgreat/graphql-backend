@@ -7,8 +7,19 @@ datasource db {
   url = env("DATABASE_URL")
 }
 
+enum Specie {
+  Cat
+  Dog
+}
+
 model User {
   id Int @id @default(autoincrement())
   username String @unique
   password String
+}
+
+model Pet {
+  id Int @id @default(autoincrement())
+  name String
+  specie Specie
 }
