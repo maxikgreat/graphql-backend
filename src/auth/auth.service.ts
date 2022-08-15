@@ -91,7 +91,7 @@ export class AuthService {
   }
 
   async refresh(username: string): Promise<LoginOutput> {
-    const user = this.usersService.findOne(username);
+    const user = await this.usersService.findOne(username);
 
     if (!user) {
       throw new NotFoundException();
