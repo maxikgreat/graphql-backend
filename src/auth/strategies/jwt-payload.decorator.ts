@@ -6,6 +6,11 @@ export interface JwtPayloadType {
   sub: number;
 }
 
+export interface JwtUser {
+  username: string;
+  id: number;
+}
+
 export const JwtPayload = createParamDecorator(
   (data: unknown, context: ExecutionContext) => {
     const ctx = GqlExecutionContext.create(context);

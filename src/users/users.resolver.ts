@@ -15,8 +15,8 @@ export class UsersResolver {
 
   @Query(() => ClientUser, { name: 'user' })
   @UseGuards(JwtAccessGuard)
-  findOne(@Args('username') username: string) {
-    const user = this.usersService.findOne(username);
+  async findOne(@Args('username') username: string) {
+    const user = await this.usersService.findOne(username);
 
     if (!user) {
       throw new NotFoundException();

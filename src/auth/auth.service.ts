@@ -1,6 +1,6 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { UsersService } from 'src/users/users.service';
-import { LoginOutput } from 'src/auth/dto/login.output';
+import { SignInOutput } from 'src/auth/dto/sign-in.output';
 import { User } from 'src/users/entities/user.entity';
 import { JwtService } from '@nestjs/jwt';
 import { SignUpInput } from 'src/auth/dto/sign-up.input';
@@ -65,7 +65,7 @@ export class AuthService {
     return user ?? null;
   }
 
-  async login(user: User): Promise<LoginOutput> {
+  async login(user: User): Promise<SignInOutput> {
     const { accessToken, refreshToken } = this.getTokens(user);
 
     return {
@@ -90,7 +90,7 @@ export class AuthService {
     });
   }
 
-  async refresh(username: string): Promise<LoginOutput> {
+  async refresh(username: string): Promise<SignInOutput> {
     const user = await this.usersService.findOne(username);
 
     if (!user) {

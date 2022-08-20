@@ -7,27 +7,33 @@ type ClientUser {
   username: String!
 }
 
-input LoginInput {
+type Mutation {
+  refresh: SignInOutput!
+  signIn(authCredentials: SignInInput!): SignInOutput!
+  signUp(authCredentials: SignUpInput!): ClientUser!
+}
+
+type Pet {
+  id: Int!
+  name: String!
+}
+
+type Query {
+  checkToken: ClientUser!
+  pets: [Pet!]!
+  user(username: String!): ClientUser!
+  users: [ClientUser!]!
+}
+
+input SignInInput {
   password: String!
   username: String!
 }
 
-type LoginOutput {
+type SignInOutput {
   accessToken: String!
   refreshToken: String!
   user: ClientUser!
-}
-
-type Mutation {
-  login(authCredentials: LoginInput!): LoginOutput!
-  refresh: LoginOutput!
-  signUp(authCredentials: SignUpInput!): ClientUser!
-}
-
-type Query {
-  books: String!
-  user(username: String!): ClientUser!
-  users: [ClientUser!]!
 }
 
 input SignUpInput {
